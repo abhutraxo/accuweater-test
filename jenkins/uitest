@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    tools {nodejs "recent node"}
+    
+    options {
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                catchError {
+                    sh "npm install"
+                }
+                sh "npm run postinstall"
+            }
+        }
+        stage('Run Rapid Test') {
+            steps {
+                catchError {
+                    sh "npm run e2e -- --baseUrl=https://accuweather.com --params.headlessBrowser=true --params.city=pune --params.variation=3"
+                }
+            }
+        }
+        stage('Publish Allure Reports') {
+            steps {
+                catchError {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'auto-generated/allure-results']]
+                    ])
+                }
+            }
+        }
+    }
+    post {
+        always {
+          sh 'rm -rf allure-report'
+          sh 'rm -rf auto-generated'
+        }
+    }
+}

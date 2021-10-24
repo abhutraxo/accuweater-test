@@ -1,0 +1,13 @@
+[2021-10-24T12:26:02.199] [DEBUG] C1 - 
+[2021-10-24T12:26:02.202] [DEBUG] C1 - - *Step Id* - 1
+[2021-10-24T12:26:02.203] [DEBUG] C1 - - *Step* - Navigate to accuweather.com
+[2021-10-24T12:26:09.468] [DEBUG] C1 - - *Verification* - Verify page is loaded
+[2021-10-24T12:26:09.472] [DEBUG] C1 - - *Step Id* - 2
+[2021-10-24T12:26:09.472] [DEBUG] C1 - - *Step* - Enter city name in Search box
+[2021-10-24T12:26:10.166] [DEBUG] C1 - - *Verification* - Click on first search result
+[2021-10-24T12:26:10.693] [DEBUG] C1 - - *Step Id* - 3
+[2021-10-24T12:26:10.693] [DEBUG] C1 - - *Step* - Get the Temp of the city
+[2021-10-24T12:26:12.971] [DEBUG] C1 - - *Step* - UI temperature is: 26
+[2021-10-24T12:26:12.971] [DEBUG] C1 - - *Verification* - Verify the temp from comparator
+[2021-10-24T12:26:13.851] [DEBUG] C1 - - *Sub-Verification* - API temp is 26.100000000000023, 28.100000000000023, 24.100000000000023, 2
+[2021-10-24T12:26:13.852] [DEBUG] C1 - - *Sub-Verification* - Field name - value : true should be equal to True
